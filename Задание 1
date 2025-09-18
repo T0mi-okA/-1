@@ -37,3 +37,23 @@ int main() {
 
 Java
 
+public class Main {
+    public static void main(String[] args) {
+        String str = "AaBbCcDd";
+        
+        // Строка с заглавными буквами (шаг 2, начиная с индекса 0)
+        StringBuilder uppercase = new StringBuilder();
+        for (int i = 0; i < str.length(); i += 2) {
+            uppercase.append(str.charAt(i));
+        }
+        
+        // Строка со строчными буквами (шаг 2, начиная с индекса 1)
+        StringBuilder lowercase = new StringBuilder();
+        for (int i = 1; i < str.length(); i += 2) {
+            lowercase.append(str.charAt(i));
+        }
+        
+        System.out.println("Заглавные: " + uppercase.toString());
+        System.out.println("Строчные: " + lowercase.toString());
+    }
+}
