@@ -1,0 +1,113 @@
+Дан список ['a', '1', 'b', '2', 'c', '3']. Разбейте его на два списка: только с буквами и только с числами. Сам список затем удалите, а новые списки выведите на экран, каждый на отдельной строке.
+
+Python
+
+# Исходный список
+original_list = ['a', '1', 'b', '2', 'c', '3']
+
+# Списки для букв и цифр
+letters = []
+numbers = []
+
+# Разделяем элементы
+for item in original_list:
+    if item.isalpha():  # если это буква
+        letters.append(item)
+    elif item.isdigit():  # если это цифра
+        numbers.append(item)
+
+# Удаляем исходный список
+del original_list
+
+# Выводим результаты
+print("Буквы:", letters)
+print("Цифры:", numbers)
+
+C++
+
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cctype> // для isalpha и isdigit
+
+using namespace std;
+
+int main() {
+    // Исходный список
+    vector<string> original_list = {"a", "1", "b", "2", "c", "3"};
+    
+    // Векторы для букв и цифр
+    vector<string> letters;
+    vector<string> numbers;
+    
+    // Разделяем элементы
+    for (const auto& item : original_list) {
+        if (item.length() == 1) {
+            if (isalpha(item[0])) {  // если это буква
+                letters.push_back(item);
+            } else if (isdigit(item[0])) {  // если это цифра
+                numbers.push_back(item);
+            }
+        }
+    }
+    
+    // Удаляем исходный список
+    original_list.clear();
+    original_list.shrink_to_fit(); // освобождаем память
+    
+    // Выводим результаты
+    cout << "Буквы: ";
+    for (const auto& letter : letters) {
+        cout << letter << " ";
+    }
+    cout << endl;
+    
+    cout << "Цифры: ";
+    for (const auto& number : numbers) {
+        cout << number << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
+
+Java
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        // Исходный список
+        List<String> originalList = new ArrayList<>();
+        originalList.add("a");
+        originalList.add("1");
+        originalList.add("b");
+        originalList.add("2");
+        originalList.add("c");
+        originalList.add("3");
+        
+        // Списки для букв и цифр
+        List<String> letters = new ArrayList<>();
+        List<String> numbers = new ArrayList<>();
+        
+        // Разделяем элементы
+        for (String item : originalList) {
+            if (item.length() == 1) {
+                char c = item.charAt(0);
+                if (Character.isLetter(c)) {  // если это буква
+                    letters.add(item);
+                } else if (Character.isDigit(c)) {  // если это цифра
+                    numbers.add(item);
+                }
+            }
+        }
+        
+        // Удаляем исходный список
+        originalList.clear();
+        
+        // Выводим результаты
+        System.out.println("Буквы: " + letters);
+        System.out.println("Цифры: " + numbers);
+    }
+}
